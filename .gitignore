@@ -1,0 +1,55 @@
+.DS_Store
+*.so.*
+*.tar.gz
+*.egg-info*
+*.out
+*.ttf
+*.jpg
+
+
+# compilation and distribution
+__pycache__
+_ext
+*.pyc
+*.so
+detectron2.egg-info/
+pointnet2.egg-info/
+bop_toolkit_lib.egg-info/
+build/
+dist/
+output/
+datasets/
+.cache/
+visualizations
+
+# pytorch/python/numpy formats
+#*.pth
+#*.pkl
+*.npy
+*.engine
+*.onnx
+events.out.tfevents*
+
+# ipython/jupyter notebooks
+*.ipynb
+**/.ipynb_checkpoints/
+
+# Editor temporaries
+*.swn
+*.swo
+*.swp
+*~
+
+# editor settings
+.idea
+.vscode/
+.codex
+
+# project dirs
+/models
+
+#external/*
+
+# cog new ignore
+/checkpoints
+akbatch_job.sh

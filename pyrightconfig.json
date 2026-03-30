@@ -1,0 +1,7 @@
+{
+  "exclude": [
+    "datasets/**",
+    "checkpoints/**",
+    "visualizations/**",
+  ]
+}

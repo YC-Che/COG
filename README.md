@@ -1,0 +1,80 @@
+# COG: Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object Pose Estimation (CVPR2026)
+
+This repo provides for the implementation of COG.
+
+## Dependencies
+
+```bash
+conda create --name cog python=3.10.12
+conda activate cog
+pip install torch==2.2.0 torchvision==0.17.0 --index-url https://download.pytorch.org/whl/cu118  # use the correct version of cuda for your system
+pip install mmcv==2.2.0 -f https://download.openmmlab.com/mmcv/dist/cu118/torch2.2/index.html # change cuda version if necessary
+
+# Other required packages
+pip install -r requirements.txt
+
+# install bop toolkit for evaluation
+cd third_party/bop_toolkit
+python setup.py install
+cd -
+
+# build pointnet2 extention
+cd core/COG/model/pointnet2/
+pip install -e .
+cd -
+
+# Install Detecron2 & pytorch3D
+pip install "git+https://github.com/facebookresearch/detectron2.git"
+pip install "git+https://github.com/facebookresearch/pytorch3d.git"
+
+# Create output directory
+mkdir output
+```
+
+## Datasets
+
+Refers to [UnoPose](https://github.com/shanice-l/UNOPose) for downloading dataset files.
+
+## Checkpoints
+
+**Download DINOv2 checkpoint:**  'timm_vit_base_patch14_reg4_dinov2_lvd142m.pth' and put it into `checkpoints/`:
+
+```bash
+# export HF_ENDPOINT="https://hf-mirror.com"  # if huggingface.co is not accessible
+python core/COG/scripts/download_and_save_dinov2_ckpt.py
+```
+
+**Download COG checkpoint:** at [model weights](https://drive.google.com/file/d/12Y6DRl3y39GxLL2rQJwM4ieWRwZUnk1c/view?usp=sharing).
+
+## Reproduce the results
+
+**Eval**
+
+```bash
+./core/COG/save_cog.sh configs/main_cfg.py <gpu_ids> <ckpt_path> (other args)
+```
+
+**Notice:** For changing the eval dataset, the `ref_targets_name, eval_dataset_name, detetion_path` in the cfg file need be replaced. Please search these parameters in the `configs/main_cfg.py`.
+
+**Training**
+
+```bash
+./core/COG/dp_train_cog.sh configs/main_cfg.py <gpu_ids> (other args)
+```
+
+## Citation
+
+If you find this repo useful in your research, please consider citing:
+
+```
+@InProceedings{che2026cog,
+      title={COG: Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object Pose Estimation}, 
+      author={Yuchen Che and Jingtu Wu and Hao Zheng and Asako Kanezaki},
+      booktitle = {CVPR},
+      year={2026}
+}
+```
+
+## Acknowledge
+
+This work is based on [UnoPose](https://github.com/shanice-l/UNOPose). Thanks for their insightful work.
