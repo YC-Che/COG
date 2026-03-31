@@ -1,6 +1,7 @@
 # COG: Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object Pose Estimation (CVPR2026)
 
-This repo provides for the implementation of COG.
+This repo provides the implementation of COG.
+Availabel at [here](https://arxiv.org/abs/2603.00493).
 
 ## Dependencies
 
