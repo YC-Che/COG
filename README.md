@@ -1,7 +1,8 @@
 # COG: Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object Pose Estimation (CVPR2026)
 
-This repo provides the implementation of COG.
-Availabel at [here](https://arxiv.org/abs/2603.00493).
+This repo provides the implementation of COG, an unsupervised model for single-reference novel object poes estimation.
+Available at [arxiv](https://arxiv.org/abs/2603.00493).
+![COG model overview](assert/cog.png)
 
 ## Dependencies
 
@@ -19,12 +20,12 @@ cd third_party/bop_toolkit
 python setup.py install
 cd -
 
-# build pointnet2 extention
+# build pointnet2 extension
 cd core/COG/model/pointnet2/
 pip install -e .
 cd -
 
-# Install Detecron2 & pytorch3D
+# Install Detectron2 & PyTorch3D
 pip install "git+https://github.com/facebookresearch/detectron2.git"
 pip install "git+https://github.com/facebookresearch/pytorch3d.git"
 
@@ -34,18 +35,18 @@ mkdir output
 
 ## Datasets
 
-Refers to [UnoPose](https://github.com/shanice-l/UNOPose) for downloading dataset files.
+Please refer to [UnoPose](https://github.com/shanice-l/UNOPose) for instructions on downloading the dataset files.
 
 ## Checkpoints
 
-**Download DINOv2 checkpoint:**  'timm_vit_base_patch14_reg4_dinov2_lvd142m.pth' and put it into `checkpoints/`:
+**Download DINOv2 checkpoint:** Download `'timm_vit_base_patch14_reg4_dinov2_lvd142m.pth'` and place it in `checkpoints/`:
 
 ```bash
 # export HF_ENDPOINT="https://hf-mirror.com"  # if huggingface.co is not accessible
 python core/COG/scripts/download_and_save_dinov2_ckpt.py
 ```
 
-**Download COG checkpoint:** at [model weights](https://drive.google.com/file/d/12Y6DRl3y39GxLL2rQJwM4ieWRwZUnk1c/view?usp=sharing).
+**Download COG checkpoint:** Download it from [model weights](https://drive.google.com/file/d/12Y6DRl3y39GxLL2rQJwM4ieWRwZUnk1c/view?usp=sharing).
 
 ## Reproduce the results
 
@@ -55,7 +56,7 @@ python core/COG/scripts/download_and_save_dinov2_ckpt.py
 ./core/COG/save_cog.sh configs/main_cfg.py <gpu_ids> <ckpt_path> (other args)
 ```
 
-**Notice:** For changing the eval dataset, the `ref_targets_name, eval_dataset_name, detetion_path` in the cfg file need be replaced. Please search these parameters in the `configs/main_cfg.py`.
+**Notice:** To change the evaluation dataset, `ref_targets_name`, `eval_dataset_name`, and `detetion_path` in the config file need to be replaced. Please search for these parameters in `configs/main_cfg.py`.
 
 **Training**
 
@@ -71,11 +72,11 @@ If you find this repo useful in your research, please consider citing:
 @InProceedings{che2026cog,
       title={COG: Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object Pose Estimation}, 
       author={Yuchen Che and Jingtu Wu and Hao Zheng and Asako Kanezaki},
-      booktitle = {CVPR},
+      booktitle={CVPR},
       year={2026}
 }
 ```
 
-## Acknowledge
+## Acknowledgments
 
-This work is based on [UnoPose](https://github.com/shanice-l/UNOPose). Thanks for their insightful work.
+This work is based on [UnoPose](https://github.com/shanice-l/UNOPose). We thank the authors for their insightful work.
