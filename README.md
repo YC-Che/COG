@@ -1,6 +1,8 @@
+
+
 # COG: Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object Pose Estimation (CVPR2026)
 
-This repo provides the implementation of COG, an unsupervised model for single-reference novel object poes estimation.
+This repo provides the implementation of COG, an unsupervised model for single-reference novel object pose estimation.
 Available at [arxiv](https://arxiv.org/abs/2603.00493).
 ![COG model overview](assert/cog.png)
 
